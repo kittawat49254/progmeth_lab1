@@ -9,8 +9,8 @@ public class GuildMember {
 	public GuildMember(String name, String jobTitle, int salary) {
 		//TODO: Value constructor. Instantiates a member with the given values.
 		setName(name);
-		this.jobTitle = jobTitle;
-		this.salary = salary;
+		setJobTitle(jobTitle);
+		setSalary(salary);
 		setMyDepartment("Unassigned");
 	}
 	
@@ -21,7 +21,7 @@ public class GuildMember {
 	public void setName(String name) {
 		//TODO: Set the member's name. If it's blank, set is as "Anon".
 		if (name.isBlank()) {
-			this.name = "anon";
+			this.name = "Anon";
 		}
 		else {
 			this.name = name;
@@ -66,7 +66,7 @@ public class GuildMember {
 			this.salary = 100000;
 		}
 		else {
-			this salary
+			this.salary = salary;
 		}
 	}
 	
