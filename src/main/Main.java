@@ -29,13 +29,18 @@ public class Main {
 	
 	public static void removeDepartmentFromDatabase(int index) {
 		//TODO: Remove a department at a given index from the database.
-		
+		ArrayList<GuildMember> ronin =  myDatabase.removeDepartment(index);
 		//TODO: Put all the members from the removed department in the
 		//"Unassigned" department at index 0.
 		//HINT: removeDepartment returns an ArrayList<GuildMember>
 		//for a good reason.
-		
+		int ronin_counter = 0;
+		for (GuildMember guildMember : ronin) {
+			guildMember.setMyDepartment("Unassigned");
+			ronin_counter+=1;
+		}
 		//TODO: Print a message that the department is removed and that all members are moved to the unassigned department.
+		System.out.println("Department removed. " + ronin_counter + " Member(s) added to Unassign Department.");
 	}
 	
 	//------------------------------------------
