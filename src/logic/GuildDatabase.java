@@ -7,24 +7,29 @@ public class GuildDatabase {
 	
 	public GuildDatabase(){
 		//TODO: Initialize myDepartments as a new arrayList of Departments.
+		myDepartments = new ArrayList<Department>();
 	}
 	
 	public boolean createDepartment(String name) {
 		//TODO: If the submitted name is not in the list of departments,
 		//create a new department, add it to myDepartments, and return true.
-		
+		if(isExists(name)== false) {
+			Department new_depart = new Department(name);
+			myDepartments.add(new_depart);
+			return true;
+		}
 		//TODO: If the name IS in the list, then DO NOT create a new
 		//department, and return false.
-		
 		//HINT: Look at the below method and think how you could use it here.
-		
 		return false;
 	}
 	
 	public boolean isExists(String name) {
 		//TODO: Create a boolean that verifies whether or not the submitted
 		//name already exists in myDepartment
-		
+		for (Department de : myDepartments) {
+			if (de.getName() == name) return true;
+		}
 		//TODO: Create a loop that cycles through each member of myDepartments.
 		
 		//TODO: If the name already exists in the list of departments, return true.
@@ -35,8 +40,9 @@ public class GuildDatabase {
 	
 	public ArrayList<GuildMember> removeDepartment(int index){
 		//TODO: Remove a department at the given index from the list, and return a list containing all the members in that department.
-		
-		return null;
+		ArrayList<GuildMember> removed_clan = (myDepartments.get(index)).getAllMembers();
+		myDepartments.remove(index);
+		return removed_clan;
 	}
 	
 	//------------------------------------------

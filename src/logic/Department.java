@@ -2,51 +2,58 @@ package logic;
 
 import java.util.ArrayList;
 
+
+
 public class Department {
 	private String name;
 	private ArrayList<GuildMember> departmentMembers;
 	
 	public Department(String name) {
 		//TODO: Write a constructor here. Initialize a new ArrayList of departmentMembers and set the name of the department.
-		
+		this.name = name;
+		departmentMembers = new ArrayList<GuildMember>();
 	}
 	
-	public boolean setName(String name) {
+	public boolean setName(String New_name) {
 		//TODO: Set name of the department. If the name is blank, return false.
-		
-		return false;
+		if (New_name.isBlank()) {
+			return false;
+		}
+		this.name  = New_name;
+		return true;
 	}
 	
 	public String getName() {
 		//TODO: Return the name of the department.
-		
-		return null;
+		return name;
 	}
 	
 	public void addMember(GuildMember m) {
 		//TODO: Add the a guild member to the guild and set their department to this one.
+		departmentMembers.add(m);
+		m.setMyDepartment(this.name);
 	}
 	
 	public void addMultipleMembers(ArrayList<GuildMember> memberList) {
 		//TODO: Add all guild members in memberList to this department. Don't forget to set the department as well.
+		departmentMembers.addAll(memberList);
 	}
 	
 	public GuildMember removeMember(int index) {
 		//TODO: Remove a member from a given index, and returns the removed member.
-		
-		return null;
+		GuildMember removed_member = departmentMembers.get(index); 
+		departmentMembers.remove(index);
+		return removed_member;
 	}
 	
 	public GuildMember getMember(int index) {
 		//TODO: Get a member from a given index.
-		
-		return null;
+		return departmentMembers.get(index);
 	}
 	
 	public ArrayList<GuildMember> getAllMembers(){
 		//TODO: Return all members in this department.
-		
-		return null;
+		return departmentMembers;
 	}
 	
 	//------------------------------------------
