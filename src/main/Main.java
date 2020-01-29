@@ -12,23 +12,19 @@ public class Main {
 	
 	public static boolean addDepartment(String newName) {
 		//TODO: Does one of three things, depends on the inputed name.
-		
 		//TODO: If newName is blank, then warn the user that
 		//the department name cannot be blank and return false.
-		
+		if(newName.isBlank()) {return false;}
 		//TODO: If newName duplicates with an existing department, then warn 
 		//the user that the department name cannot be duplicate and
+		if (myDatabase.isExists(newName)) {return false;}
 		//return false.
 		//HINT: createDepartment from GuildDatabase returns a boolean
 		//for a good reason.
-		
 		//TODO: If it's not blank and not a duplicate,
 		//create the department normally, print a message
 		//that the department has been created, and return true.
-		
-		
-		
-		return false;
+		return myDatabase.createDepartment(newName);
 	}
 	
 	public static void removeDepartmentFromDatabase(int index) {
