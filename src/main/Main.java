@@ -14,34 +14,49 @@ public class Main {
 		//TODO: Does one of three things, depends on the inputed name.
 		//TODO: If newName is blank, then warn the user that
 		//the department name cannot be blank and return false.
-		if(newName.isBlank()) {return false;}
+		if(newName.isBlank()) {
+			System.out.println("Department name cannot be blank!");
+			return false;
+			}
 		//TODO: If newName duplicates with an existing department, then warn 
 		//the user that the department name cannot be duplicate and
-		if (myDatabase.isExists(newName)) {return false;}
+		if (myDatabase.isExists(newName)) {
+			System.out.println("Department name cannot be duplicate!");
+			return false;
+			}
 		//return false.
 		//HINT: createDepartment from GuildDatabase returns a boolean
 		//for a good reason.
 		//TODO: If it's not blank and not a duplicate,
 		//create the department normally, print a message
 		//that the department has been created, and return true.
-		return myDatabase.createDepartment(newName);
+		boolean created = myDatabase.createDepartment(newName);
+		if(created) {
+			System.out.println(newName + " Department created");
+		}
+		return created;
 	}
 	
 	public static void removeDepartmentFromDatabase(int index) {
 		//TODO: Remove a department at a given index from the database.
-		ArrayList<GuildMember> ronin =  myDatabase.removeDepartment(index);
+		//System.out.println("Are you sure you want to remove this department? All members will be moved to Unassigned Department .(y/n)");
+		//String choice = kb.nextLine();
+		//if (choice == "y") {
+			ArrayList<GuildMember> ronin =  myDatabase.removeDepartment(index);
 		//TODO: Put all the members from the removed department in the
 		//"Unassigned" department at index 0.
 		//HINT: removeDepartment returns an ArrayList<GuildMember>
 		//for a good reason.
-		int ronin_counter = 0;
-		for (GuildMember guildMember : ronin) {
-			guildMember.setMyDepartment("Unassigned");
-			ronin_counter+=1;
-		}
+			int ronin_counter = 0;
+				for (GuildMember guildMember : ronin) {
+					//guildMember.setMyDepartment("Unassigned");
+					myDatabase.getDepartment(0).addMember(guildMember);
+					ronin_counter+=1;
+				}
 		//TODO: Print a message that the department is removed and that all members are moved to the unassigned department.
-		System.out.println("Department removed. " + ronin_counter + " Member(s) added to Unassign Department.");
-	}
+			System.out.println("Department removed. " + ronin_counter + " Member(s) added to Unassign Department.");
+			//}
+		}
 	
 	//------------------------------------------
 	//---do not edit anything below this line---

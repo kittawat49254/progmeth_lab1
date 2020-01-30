@@ -42,6 +42,7 @@ public class Department {
 	public GuildMember removeMember(int index) {
 		//TODO: Remove a member from a given index, and returns the removed member.
 		GuildMember removed_member = departmentMembers.get(index); 
+		removed_member.setMyDepartment("Unassigned");
 		departmentMembers.remove(index);
 		return removed_member;
 	}

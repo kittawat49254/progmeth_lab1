@@ -28,7 +28,9 @@ public class GuildDatabase {
 		//TODO: Create a boolean that verifies whether or not the submitted
 		//name already exists in myDepartment
 		for (Department de : myDepartments) {
-			if (de.getName() == name) return true;
+			if ((de.getName()).equals(name)) {
+				return true;
+			}
 		}
 		//TODO: Create a loop that cycles through each member of myDepartments.
 		
